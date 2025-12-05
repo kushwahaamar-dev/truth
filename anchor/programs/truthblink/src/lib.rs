@@ -9,7 +9,7 @@ use constants::*;
 use error::ErrorCode;
 use state::*;
 
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
+declare_id!("BMLPwQE7THXBWM72ihnEJ63mjvw2Bmg7Ert2oXbpj9sX");
 
 #[program]
 pub mod truthblink {
@@ -26,7 +26,7 @@ pub mod truthblink {
         market.total_no = 0;
         market.resolved = false;
         market.outcome = None;
-        market.bump = *ctx.bumps.get("market").unwrap();
+        market.bump = ctx.bumps.market;
         Ok(())
     }
 
@@ -62,7 +62,7 @@ pub mod truthblink {
 
         if user_bet.owner == Pubkey::default() {
             user_bet.owner = ctx.accounts.user.key();
-            user_bet.bump = *ctx.bumps.get("user_bet").unwrap();
+            user_bet.bump = ctx.bumps.user_bet;
         }
 
         Ok(())

@@ -1,8 +1,8 @@
 import { PublicKey } from "@solana/web3.js";
 
-// Program ID - Update this after deploying your own contract
+// Program ID - Deployed to Solana Devnet for MBC 2025 Hackathon
 export const PROGRAM_ID = new PublicKey(
-  process.env.NEXT_PUBLIC_PROGRAM_ID || "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+  process.env.NEXT_PUBLIC_PROGRAM_ID || "BMLPwQE7THXBWM72ihnEJ63mjvw2Bmg7Ert2oXbpj9sX"
 );
 
 // USDC Mint (Devnet)

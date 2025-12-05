@@ -5,16 +5,16 @@ seeds = false
 skip-lint = false
 
 [programs.localnet]
-truthblink = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+truthblink = "BMLPwQE7THXBWM72ihnEJ63mjvw2Bmg7Ert2oXbpj9sX"
 
 [programs.devnet]
-truthblink = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+truthblink = "BMLPwQE7THXBWM72ihnEJ63mjvw2Bmg7Ert2oXbpj9sX"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
+cluster = "Devnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]

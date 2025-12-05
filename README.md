@@ -41,7 +41,7 @@ Quick setup - create `apps/web/.env.local`:
 ```env
 NEXT_PUBLIC_SOLANA_NETWORK=devnet
 SOLANA_RPC_URL=https://api.devnet.solana.com
-NEXT_PUBLIC_PROGRAM_ID=Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS
+NEXT_PUBLIC_PROGRAM_ID=BMLPwQE7THXBWM72ihnEJ63mjvw2Bmg7Ert2oXbpj9sX
 NEXT_PUBLIC_USDC_MINT=4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU
 GEMINI_API_KEY=your_key_here
 ADMIN_API_KEY=your_secret_key
@@ -252,9 +252,19 @@ npm run package
 - [ ] Leaderboard & user stats
 - [ ] Multi-language support
 
+## 🔗 Deployed Contracts
+
+| Network | Program ID | Status |
+|---------|------------|--------|
+| **Devnet** | `BMLPwQE7THXBWM72ihnEJ63mjvw2Bmg7Ert2oXbpj9sX` | ✅ Live |
+| Mainnet | TBD | Coming Soon |
+
+**Explorer Links:**
+- [View on Solana Explorer (Devnet)](https://explorer.solana.com/address/BMLPwQE7THXBWM72ihnEJ63mjvw2Bmg7Ert2oXbpj9sX?cluster=devnet)
+
 ## 📄 License
 
-MIT License - Built for Solana Hackathon 2024
+MIT License - Built for MBC 2025 Hackathon (Solana Track + Polymarket Bounty)
 
 ---
 
