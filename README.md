@@ -15,6 +15,23 @@ A browser extension and dApp that bridges Web2 social media with Web3 prediction
 
 ---
 
+## 📑 Table of Contents
+
+- [Hackathon Submission Details](#-hackathon-submission-details)
+- [Architecture Overview](#️-architecture-overview)
+- [Features](#-features)
+- [Deployed Contracts](#-deployed-contracts)
+- [Quick Start](#-quick-start)
+- [Project Structure](#-project-structure)
+- [Tech Stack](#-tech-stack)
+- [API Reference](#-api-reference)
+- [Smart Contract](#-smart-contract)
+- [Testing](#-testing)
+- [Team](#-team)
+- [License](#-license)
+
+---
+
 ## 📋 Hackathon Submission Details
 
 | Field | Value |
