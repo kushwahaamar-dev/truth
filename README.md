@@ -40,7 +40,7 @@ A browser extension and dApp that bridges Web2 social media with Web3 prediction
 | **Track** | Solana Main Track + Polymarket Bounty |
 | **Team** | Amar Kushwaha |
 | **GitHub** | https://github.com/kushwahaamar-dev/truth |
-| **Video Demo** | [VIDEO_LINK_HERE] |
+| **Video Demo** | https://youtu.be/R2hBaZrOQdU |
 | **Program ID (Devnet)** | `BMLPwQE7THXBWM72ihnEJ63mjvw2Bmg7Ert2oXbpj9sX` |
 
 ### Track Requirements Met
