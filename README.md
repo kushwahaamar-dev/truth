@@ -1,5 +1,8 @@
 # TruthBlink ⚡
 
+> **MBC 2025 Hackathon Submission**  
+> Solana Main Track + Polymarket Bounty ($5,000)
+
 **Bet on the Truth directly from Twitter/X using Solana Blinks.**
 
 A browser extension and dApp that bridges Web2 social media with Web3 prediction markets using Solana Blinks (Blockchain Links) and Actions. Place USDC bets on viral claims without leaving your Twitter feed.
@@ -8,6 +11,103 @@ A browser extension and dApp that bridges Web2 social media with Web3 prediction
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
 ![Anchor](https://img.shields.io/badge/Anchor-9945FF?style=flat&logo=anchor&logoColor=white)
+![Polymarket](https://img.shields.io/badge/Polymarket-FF6B35?style=flat&logoColor=white)
+
+---
+
+## 📋 Hackathon Submission Details
+
+| Field | Value |
+|-------|-------|
+| **Project Name** | TruthBlink |
+| **Track** | Solana Main Track + Polymarket Bounty |
+| **Team** | Amar Kushwaha |
+| **GitHub** | https://github.com/kushwahaamar-dev/truth |
+| **Video Demo** | [VIDEO_LINK_HERE] |
+| **Program ID (Devnet)** | `BMLPwQE7THXBWM72ihnEJ63mjvw2Bmg7Ert2oXbpj9sX` |
+
+### Track Requirements Met
+
+#### ✅ Solana Main Track
+- [x] Deployed to Solana Devnet
+- [x] Uses Anchor Framework (Rust)
+- [x] Uses @solana/web3.js
+- [x] Uses @solana/actions (Blinks)
+- [x] Uses SPL Token (USDC)
+- [x] Public GitHub with documentation
+- [x] Functional demo (Chrome extension + web app)
+
+#### ✅ Polymarket Bounty ($5,000)
+- [x] Integrates Polymarket public APIs (gamma-api.polymarket.com)
+- [x] Cross-chain data integration (Polymarket EVM → Solana betting)
+- [x] Clear utility: Bet on predictions from Twitter
+- [x] Original UX: First Solana Blinks + Polymarket + Twitter integration
+
+---
+
+## 🏗️ Architecture Overview
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                         TRUTHBLINK ARCHITECTURE                  │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│   Twitter/X     │     │   Polymarket    │     │     Solana      │
+│   (Web2 Feed)   │     │   (EVM Data)    │     │   (Settlement)  │
+└────────┬────────┘     └────────┬────────┘     └────────┬────────┘
+         │                       │                       │
+         ▼                       ▼                       │
+┌─────────────────────────────────────────┐              │
+│         CHROME EXTENSION (Plasmo)       │              │
+│  • Tweet Scanner (MutationObserver)     │              │
+│  • Bet Button Injection                 │              │
+│  • Tooltip with Live Odds               │              │
+└────────────────────┬────────────────────┘              │
+                     │                                   │
+                     ▼                                   │
+┌─────────────────────────────────────────┐              │
+│         NEXT.JS API SERVER              │              │
+│                                         │              │
+│  /api/search-market                     │              │
+│    └─ Gemini AI matching                │              │
+│    └─ Polymarket API fetch              │              │
+│                                         │              │
+│  /api/actions/bet (Solana Blink)        │──────────────┤
+│    └─ GET: Blink metadata + odds        │              │
+│    └─ POST: Transaction builder         │              │
+│                                         │              │
+│  /api/markets                           │              │
+│    └─ List all markets                  │              │
+└────────────────────┬────────────────────┘              │
+                     │                                   │
+                     ▼                                   ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    ANCHOR SMART CONTRACT                         │
+│                    Program ID: BMLPwQE7...oXbpj9sX              │
+│                                                                  │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────────┐  │
+│  │ initialize  │  │  place_bet  │  │ resolve_market + claim  │  │
+│  │   market    │  │             │  │                         │  │
+│  └─────────────┘  └─────────────┘  └─────────────────────────┘  │
+│                                                                  │
+│  Accounts:                                                       │
+│  • Market PDA (betting pool state)                              │
+│  • UserBet PDA (individual bets)                                │
+│  • Vault (USDC escrow)                                          │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Data Flow
+
+1. **User scrolls Twitter** → Extension scans tweets
+2. **AI matches tweet** → Polymarket market found
+3. **Bet button appears** → Shows live odds from Polymarket
+4. **User clicks Bet** → Opens Solana Blink (Dialect)
+5. **User signs transaction** → USDC transferred to on-chain vault
+6. **Market resolves** → Winners claim proportional payouts
+
+---
 
 ## 🎯 Features
 
@@ -19,6 +119,16 @@ A browser extension and dApp that bridges Web2 social media with Web3 prediction
 - **📱 Mobile Ready**: Responsive Blink preview pages
 - **🔐 Admin Dashboard**: Initialize and resolve markets
 
+---
+
+## 🔗 Deployed Contracts
+
+| Network | Program ID | Status | Explorer |
+|---------|------------|--------|----------|
+| **Devnet** | `BMLPwQE7THXBWM72ihnEJ63mjvw2Bmg7Ert2oXbpj9sX` | ✅ Live | [View](https://explorer.solana.com/address/BMLPwQE7THXBWM72ihnEJ63mjvw2Bmg7Ert2oXbpj9sX?cluster=devnet) |
+
+---
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -28,23 +138,20 @@ A browser extension and dApp that bridges Web2 social media with Web3 prediction
 
 ### 1. Install Dependencies
 ```bash
-git clone https://github.com/your-repo/truthblink.git
-cd truthblink
+git clone https://github.com/kushwahaamar-dev/truth.git
+cd truth
 npm install
 ```
 
 ### 2. Configure Environment
 
-See **[ENV_SETUP.md](./ENV_SETUP.md)** for detailed instructions.
-
-Quick setup - create `apps/web/.env.local`:
+Create `apps/web/.env.local`:
 ```env
 NEXT_PUBLIC_SOLANA_NETWORK=devnet
 SOLANA_RPC_URL=https://api.devnet.solana.com
 NEXT_PUBLIC_PROGRAM_ID=BMLPwQE7THXBWM72ihnEJ63mjvw2Bmg7Ert2oXbpj9sX
 NEXT_PUBLIC_USDC_MINT=4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU
 GEMINI_API_KEY=your_key_here
-ADMIN_API_KEY=your_secret_key
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
 ```
 
@@ -54,18 +161,18 @@ cd apps/web
 npm run dev
 ```
 
-### 4. Run the Extension
+### 4. Build & Load Extension
 ```bash
 cd apps/extension
-npm run dev
+npm run build
 ```
-
-### 5. Load Extension in Chrome
 1. Open `chrome://extensions`
 2. Enable **Developer mode**
 3. Click **Load unpacked**
-4. Select `apps/extension/build/chrome-mv3-dev`
+4. Select `apps/extension/build/chrome-mv3-prod`
 5. Browse Twitter/X and look for ⚡ Bet buttons!
+
+---
 
 ## 📁 Project Structure
 
@@ -90,23 +197,35 @@ truthblink/
 │       ├── app/
 │       │   ├── api/
 │       │   │   ├── actions/bet/   # Solana Actions (Blinks)
-│       │   │   ├── admin/         # Admin endpoints
+│       │   │   ├── search-market/ # AI tweet matching
 │       │   │   ├── markets/       # Market listing
-│       │   │   ├── match/         # AI tweet matching
-│       │   │   ├── og/            # Social share images
-│       │   │   └── resolve/       # Market resolution
+│       │   │   └── admin/         # Admin endpoints
 │       │   ├── admin/             # Admin dashboard
 │       │   └── blink/[marketId]/  # Mobile Blink preview
 │       └── lib/
-│           ├── config.ts          # Network configuration
 │           ├── gemini.ts          # AI matching
 │           ├── polymarket.ts      # Market data
-│           ├── polymarket-odds.ts # Live odds
-│           └── supabase.ts        # Caching layer
+│           └── polymarket-odds.ts # Live odds
 │
 ├── ENV_SETUP.md               # Environment setup guide
-└── README.md
+└── README.md                  # This file
 ```
+
+---
+
+## 🎨 Tech Stack
+
+| Component | Technology |
+|-----------|------------|
+| Smart Contract | Anchor (Rust) on Solana |
+| Web Server | Next.js 14 (App Router) |
+| Extension | Plasmo (React) |
+| AI Matching | Google Gemini 1.5 Flash |
+| Prediction Data | Polymarket API |
+| Token | USDC (SPL Token) |
+| Blinks | @solana/actions |
+
+---
 
 ## 📡 API Reference
 
@@ -116,35 +235,32 @@ truthblink/
 |--------|----------|-------------|
 | `GET` | `/api/actions/bet?marketId=xxx` | Blink metadata with live odds |
 | `POST` | `/api/actions/bet?marketId=xxx&side=yes&amount=10` | Transaction payload |
-| `OPTIONS` | `/api/actions/bet` | CORS preflight |
 
 ### Backend APIs
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| `GET` | `/api/markets` | List all markets |
-| `POST` | `/api/match` | AI match tweet → market |
+| `GET` | `/api/markets` | List all markets from Polymarket |
+| `POST` | `/api/search-market` | AI match tweet → market |
 | `POST` | `/api/admin/initialize` | Create new market (auth) |
-| `POST` | `/api/resolve` | Resolve market (auth) |
-| `GET` | `/api/og?marketId=xxx&title=xxx` | OG image generation |
 
-### Pages
-
-| Route | Description |
-|-------|-------------|
-| `/` | Landing page with market list |
-| `/blink/[marketId]` | Mobile Blink preview |
-| `/admin` | Admin dashboard |
+---
 
 ## 🔐 Smart Contract
+
+### Instructions
+
+1. `initialize_market(external_id)` - Create betting pool linked to Polymarket
+2. `place_bet(amount, side_yes)` - Deposit USDC, record bet direction
+3. `resolve_market(outcome_yes)` - Admin closes market with outcome
+4. `claim_winnings()` - Winners withdraw proportional payouts
 
 ### Accounts
 
 ```rust
-// Market - Betting pool state
 pub struct Market {
     pub authority: Pubkey,      // Admin
-    pub external_id: String,    // Polymarket ID
+    pub external_id: String,    // Polymarket market ID
     pub total_yes: u64,         // USDC on YES
     pub total_no: u64,          // USDC on NO
     pub resolved: bool,
@@ -152,7 +268,6 @@ pub struct Market {
     pub bump: u8,
 }
 
-// UserBet - Individual bet
 pub struct UserBet {
     pub owner: Pubkey,
     pub amount_yes: u64,
@@ -162,21 +277,12 @@ pub struct UserBet {
 }
 ```
 
-### Instructions
-
-1. `initialize_market(external_id)` - Create betting pool
-2. `place_bet(amount, side_yes)` - Deposit USDC
-3. `resolve_market(outcome_yes)` - Close market (admin)
-4. `claim_winnings()` - Withdraw winnings
+---
 
 ## 🧪 Testing
 
-### Test the Web Server
+### Test the Blink API
 ```bash
-# Markets API
-curl http://localhost:3000/api/markets
-
-# Blink API
 curl "http://localhost:3000/api/actions/bet?marketId=btc-100k-2025"
 ```
 
@@ -185,89 +291,25 @@ curl "http://localhost:3000/api/actions/bet?marketId=btc-100k-2025"
 https://dial.to/?action=solana-action:http://localhost:3000/api/actions/bet?marketId=btc-100k-2025
 ```
 
-### Run Anchor Tests
-```bash
-cd anchor
-anchor test
-```
+---
 
-## 🚀 Production Deployment
+## 👥 Team
 
-### 1. Deploy Smart Contract
-```bash
-cd anchor
-anchor build
-anchor deploy --provider.cluster mainnet
-# Update NEXT_PUBLIC_PROGRAM_ID with new address
-```
+| Name | Role | GitHub |
+|------|------|--------|
+| Amar Kushwaha | Solo Developer | [@kushwahaamar-dev](https://github.com/kushwahaamar-dev) |
 
-### 2. Update Environment
-```env
-NEXT_PUBLIC_SOLANA_NETWORK=mainnet-beta
-SOLANA_RPC_URL=https://mainnet.helius-rpc.com/?api-key=YOUR_KEY
-NEXT_PUBLIC_USDC_MINT=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
-```
-
-### 3. Deploy Web App
-```bash
-cd apps/web
-npm run build
-# Deploy to Vercel, Railway, etc.
-```
-
-### 4. Publish Extension
-```bash
-cd apps/extension
-npm run build
-npm run package
-# Upload to Chrome Web Store
-```
-
-## 🎨 Tech Stack
-
-| Component | Technology |
-|-----------|------------|
-| Smart Contract | Anchor (Rust) |
-| Web Server | Next.js 14 (App Router) |
-| Extension | Plasmo (React) |
-| AI Matching | Gemini 1.5 Flash |
-| Database | Supabase (PostgreSQL) |
-| Token | USDC (SPL Token) |
-| RPC | Helius / Solana |
-
-## 📋 Roadmap
-
-- [x] Anchor smart contract with USDC escrow
-- [x] Solana Actions/Blinks integration
-- [x] Chrome extension with Twitter injection
-- [x] Gemini AI market matching
-- [x] Supabase caching for API efficiency
-- [x] Polymarket real-time odds display
-- [x] Mobile-responsive Blink UI
-- [x] Admin dashboard for market management
-- [x] OG image generation for social sharing
-- [x] Mainnet deployment configuration
-- [ ] Extension popup with trending markets
-- [ ] Push notifications for resolution
-- [ ] Leaderboard & user stats
-- [ ] Multi-language support
-
-## 🔗 Deployed Contracts
-
-| Network | Program ID | Status |
-|---------|------------|--------|
-| **Devnet** | `BMLPwQE7THXBWM72ihnEJ63mjvw2Bmg7Ert2oXbpj9sX` | ✅ Live |
-| Mainnet | TBD | Coming Soon |
-
-**Explorer Links:**
-- [View on Solana Explorer (Devnet)](https://explorer.solana.com/address/BMLPwQE7THXBWM72ihnEJ63mjvw2Bmg7Ert2oXbpj9sX?cluster=devnet)
+---
 
 ## 📄 License
 
-MIT License - Built for MBC 2025 Hackathon (Solana Track + Polymarket Bounty)
+MIT License - Built for MBC 2025 Hackathon
 
 ---
 
 <p align="center">
   <strong>TruthBlink</strong> - Where Web2 meets Web3 prediction markets ⚡
+  <br><br>
+  <a href="https://github.com/kushwahaamar-dev/truth">GitHub</a> •
+  <a href="https://explorer.solana.com/address/BMLPwQE7THXBWM72ihnEJ63mjvw2Bmg7Ert2oXbpj9sX?cluster=devnet">Solana Explorer</a>
 </p>

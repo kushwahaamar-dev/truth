@@ -8,8 +8,8 @@ export const config: PlasmoCSConfig = {
   all_frames: true,
 };
 
-// Configuration - Update for production
-const API_BASE = process.env.PLASMO_PUBLIC_API_URL || "http://localhost:3000";
+// Configuration - Using Cloudflare tunnel to bypass ad blockers
+const API_BASE = process.env.PLASMO_PUBLIC_API_URL || "https://macro-precisely-dome-statement.trycloudflare.com";
 
 // Helper to find tweet text
 const getTweetText = (article: HTMLElement): string | null => {
