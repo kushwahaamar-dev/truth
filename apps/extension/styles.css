@@ -1,0 +1,206 @@
+/* TruthBlink Extension Styles - Twitter Dark Theme */
+
+.tb-bet-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.tb-bet-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Button matching Twitter's action button style */
+.tb-bet-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: rgb(113, 118, 123);
+  border: none;
+  border-radius: 9999px;
+  padding: 8px 12px;
+  font-weight: 500;
+  font-size: 13px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tb-bet-button:hover {
+  background: rgba(29, 155, 240, 0.1);
+  color: rgb(29, 155, 240);
+}
+
+.tb-bet-button:active {
+  transform: scale(0.95);
+}
+
+.tb-bet-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.tb-bet-odds {
+  padding: 2px 8px;
+  background: rgba(29, 155, 240, 0.15);
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgb(29, 155, 240);
+}
+
+/* Tooltip - Floating card above everything */
+.tb-tooltip {
+  position: fixed !important;
+  z-index: 2147483647 !important; /* Max z-index */
+  background: #000000 !important;
+  border: 1px solid rgb(56, 68, 77) !important;
+  border-radius: 16px !important;
+  padding: 16px !important;
+  width: 300px !important;
+  max-width: calc(100vw - 40px) !important;
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 8px 32px rgba(0, 0, 0, 0.8),
+    0 4px 16px rgba(0, 0, 0, 0.6) !important;
+  animation: tb-tooltip-fade-in 0.15s ease !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  pointer-events: auto !important; /* Allow clicking the link */
+  isolation: isolate !important;
+}
+
+.tb-tooltip-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: rgb(29, 155, 240) !important;
+  margin-bottom: 8px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.tb-tooltip-text {
+  display: block !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: rgb(231, 233, 234) !important;
+  line-height: 1.4 !important;
+  margin-bottom: 12px !important;
+}
+
+/* Odds Display - Clean card style */
+.tb-tooltip-odds {
+  background: rgb(22, 24, 28) !important;
+  border-radius: 12px !important;
+  padding: 8px 12px !important;
+  border: 1px solid rgb(56, 68, 77) !important;
+}
+
+.tb-odds-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 6px 0 !important;
+  border-bottom: 1px solid rgb(47, 51, 54) !important;
+}
+
+.tb-odds-row:last-of-type {
+  border-bottom: none !important;
+}
+
+.tb-odds-label {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: rgb(231, 233, 234) !important;
+}
+
+.tb-odds-value {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+}
+
+.tb-odds-yes {
+  color: rgb(0, 186, 124) !important;
+}
+
+.tb-odds-mid {
+  color: rgb(255, 193, 7) !important;
+}
+
+.tb-odds-no {
+  color: rgb(113, 118, 123) !important;
+}
+
+.tb-odds-more {
+  font-size: 12px !important;
+  color: rgb(113, 118, 123) !important;
+  text-align: center !important;
+  padding-top: 8px !important;
+  font-style: italic !important;
+}
+
+.tb-odds-volume {
+  font-size: 12px !important;
+  color: rgb(113, 118, 123) !important;
+  text-align: center !important;
+  margin-top: 8px !important;
+  padding-top: 8px !important;
+  border-top: 1px solid rgb(47, 51, 54) !important;
+}
+
+/* Polymarket Link Button */
+.tb-polymarket-link {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  margin-top: 12px !important;
+  padding: 10px 16px !important;
+  background: rgb(29, 155, 240) !important;
+  border: none !important;
+  border-radius: 9999px !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+.tb-polymarket-link:hover {
+  background: rgb(26, 140, 216) !important;
+  transform: scale(1.02) !important;
+}
+
+.tb-polymarket-link svg {
+  flex-shrink: 0 !important;
+}
+
+@keyframes tb-tooltip-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .tb-bet-button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  
+  .tb-tooltip {
+    width: 280px;
+    padding: 12px;
+  }
+}

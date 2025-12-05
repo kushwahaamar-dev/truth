@@ -1,0 +1,188 @@
+/* Popup Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+  color: white;
+}
+
+.popup-container {
+  width: 320px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #9945FF 0%, #14F195 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo svg {
+  width: 24px;
+  height: 24px;
+  stroke: #14F195;
+}
+
+.badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 8px;
+  background: rgba(153, 69, 255, 0.2);
+  border: 1px solid rgba(153, 69, 255, 0.3);
+  border-radius: 4px;
+  color: #9945FF;
+}
+
+/* Content */
+.popup-content {
+  flex: 1;
+  padding: 16px;
+}
+
+.popup-content h2 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+/* Loading */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  gap: 12px;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(153, 69, 255, 0.2);
+  border-top-color: #9945FF;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading span {
+  font-size: 13px;
+  color: #666;
+}
+
+/* Error */
+.error {
+  text-align: center;
+  padding: 20px;
+  color: #ff6b6b;
+  font-size: 13px;
+}
+
+/* Markets List */
+.markets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.market-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  color: white;
+}
+
+.market-item:hover {
+  background: rgba(153, 69, 255, 0.1);
+  border-color: rgba(153, 69, 255, 0.3);
+  transform: translateX(4px);
+}
+
+.market-question {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  flex: 1;
+  margin-right: 12px;
+}
+
+.market-volume {
+  font-size: 11px;
+  font-weight: 600;
+  color: #14F195;
+  white-space: nowrap;
+}
+
+/* Footer */
+.popup-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.footer-btn {
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #9945FF 0%, #14F195 100%);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.footer-btn:hover {
+  opacity: 0.9;
+}
+
+.footer-link {
+  font-size: 12px;
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: #9945FF;
+}
+
